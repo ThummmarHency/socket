@@ -54,7 +54,7 @@ const Chat = () => {
         block: "end",
       });
     }
-  }, [chat, rooms]);
+  }, [chat, rooms, users]);
 
   const sendMessage = async () => {
     const payload = { message, room, socketId };
@@ -152,9 +152,9 @@ const Chat = () => {
               {chat?.map((chat, idx) => (
                 <li
                   key={idx}
-                  className={chat.writer === socketId ? "chat-me" : "chat-user"}
+                  className={chat?.writer === socketId ? "chat-me" : "chat-user"}
                 >
-                  {chat.writer === socketId ? (
+                  {chat?.writer === socketId ? (
                     <div>
                       {chat.message}
                       <img
@@ -166,7 +166,7 @@ const Chat = () => {
                       />
                     </div>
                   ) : (
-                    `User (${chat.writer.slice(0, 5)}): ${chat.message}`
+                    `User (${chat?.writer?.slice(0, 5)}): ${chat.message}`
                   )}
                 </li>
               ))}

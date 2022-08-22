@@ -16,7 +16,6 @@ const PreChat = () => {
 
   useEffect(()=>{
     socket.on("me", (id) => {
-      // setSocketId(id);
       localStorage.setItem("socketId", id);
     });
   },[])
